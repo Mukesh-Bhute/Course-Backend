@@ -62,8 +62,18 @@ class CourseInstanceDetailView(generics.RetrieveAPIView):
         year = self.kwargs['year']
         semester = self.kwargs['semester']
         course_id = self.kwargs['course_id']
-        return CourseInstance.objects.get(year=year, semester=semester, course_id=course_id)
+        try:
+            return CourseInstance.objects.get(year=year, semester=semester, course_id=course_id)
+        except CourseInstance.DoesNotExist:
+            return None  
 
+    def get(self, request, *args, **kwargs):
+        instance = self.get_object()
+        if instance is None:
+            return Response(None, status=200)
+        serializer = self.get_serializer(instance)
+        return Response(serializer.data)
+    
 # 8. Delete a course instance
 class CourseInstanceDeleteView(generics.DestroyAPIView):
     queryset = CourseInstance.objects.all()
