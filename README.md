@@ -60,7 +60,7 @@ This project implements a backend API using Django and Django REST framework for
 1. Clone the repository:
     ```bash
     git clone https://github.com/Mukesh-Bhute/Course-Backend
-    cd Courses_backend
+    cd Course-Backend/courses_backend
     ```
 
 2. To run project:
