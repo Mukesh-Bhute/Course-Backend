@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  backend:
+    image: mukeshbhute/backend-api:v1
+    container_name: backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_SETTINGS_MODULE=courses_api.settings
+    command: python manage.py runserver 0.0.0.0:8000
+    networks:
+      - my-network
+
+  frontend:
+    image: mukeshbhute/frontend-courses:v1
+    container_name: frontend
+    ports:
+      - "4200:80"
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
