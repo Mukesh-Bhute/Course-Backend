@@ -68,6 +68,11 @@ This project implements a backend API using Django and Django REST framework for
     docker compose up
     ```
 
+2. To run project in browser:
+    ```bash
+    localhost:4200
+    ```   
+
 2. To stop project:
     ```bash
     docker compose down
